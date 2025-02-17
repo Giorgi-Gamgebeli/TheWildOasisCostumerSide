@@ -15,7 +15,6 @@ export async function getCabin(
   id: z.infer<typeof CabinsSchemaDatabase.shape.id>
 ) {
   const result = CabinsSchemaDatabase.shape.id.safeParse(id);
-  console.log(result.error);
 
   if (!result.success) throw new Error("Validation failed on server!");
 

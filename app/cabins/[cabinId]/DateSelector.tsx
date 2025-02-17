@@ -34,7 +34,6 @@ function DateSelector({
   cabin: { regularPrice, discount },
 }: DateSelectorProps) {
   const { range, setRange, resetRange } = useReservation();
-  console.log(bookedDates);
 
   const numNights =
     range.from && range.to ? differenceInDays(range.to, range.from) : 0;

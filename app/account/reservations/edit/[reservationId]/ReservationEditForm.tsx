@@ -35,7 +35,6 @@ function ReservationEditForm({
       id: reservationId,
     },
   });
-  console.log(errors);
 
   const [isPending, startTransition] = useTransition();
 

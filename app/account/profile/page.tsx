@@ -1,6 +1,8 @@
 import UpdateProfileForm from "@/app/account/profile/UpdateProfileForm";
 import { getCountries } from "@/app/_lib/data-service";
 
+export const dynamic = "force-dynamic";
+
 export default async function Page() {
   const countries = await getCountries();
 

@@ -3,7 +3,6 @@ import { auth } from "@/auth";
 
 async function Page() {
   const session = await auth();
-  console.log(session);
 
   if (!session?.user) return <Spinner />;
 

@@ -3,9 +3,58 @@ import image1 from "@/public/about-1.jpg";
 import image2 from "@/public/about-2.jpg";
 import { getCabinsLength } from "../_lib/data-service";
 import Link from "next/link";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "About",
+
+  description:
+    "Where nature's beauty and comfortable living blend seamlessly. Hidden away in the heart of the Italian Dolomites, this is your paradise away from home. But it's not just about the luxury cabins. It's about the experience of reconnecting with nature and enjoying simple pleasures with family.",
+  keywords: [
+    "frontend",
+    "giorgi gamgebeli",
+    "react",
+    "nextjs",
+    "the wild oasis about",
+    "the wild oasis customer about",
+    "the wild oasis customer about page",
+  ],
+
+  openGraph: {
+    title: "About",
+
+    description:
+      "This is where memorable moments are made, surrounded by nature's splendor. It's a place to slow down, relax, and feel the joy of being together in a beautiful setting.",
+    images: [
+      {
+        url: "/aboutPage.png",
+        alt: "The Wild Oasis about page",
+      },
+    ],
+    url: process.env.NEXT_PUBLIC_BASE_URL,
+    siteName: "The Wild Oasis customer side | Giorgi Gamgebeli",
+    locale: "en-US",
+    type: "website",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      "max-image-preview": "large",
+    },
+  },
+
+  category: "web development",
+
+  twitter: {
+    card: "summary_large_image",
+    title: "The Wild Oasis about page | Giorgi Gamgebeli",
+    description:
+      "This is where memorable moments are made, surrounded by nature's splendor. It's a place to slow down, relax, and feel the joy of being together in a beautiful setting.",
+    images: ["/aboutPage.png"],
+  },
 };
 
 async function Page() {
