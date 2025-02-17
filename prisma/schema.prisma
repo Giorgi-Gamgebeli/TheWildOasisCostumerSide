@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(cuid())
+  name          String
+  email         String         @unique
+  password      String?
+  role          UserRole       @default(GUEST)
+  image         String?
+  emailVerified DateTime?
+  nationalID    String?
+  nationality   String?
+  countryFlag   String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  reservations  Reservations[]
+}
+
+model Cabins {
+  id           Int            @id @default(autoincrement())
+  createdAt    DateTime       @default(now())
+  name         String
+  maxCapacity  Int
+  regularPrice Float
+  discount     Float
+  description  String
+  image        String
+  reservations Reservations[]
+}
+
+model Reservations {
+  id           Int               @id @default(autoincrement())
+  createdAt    DateTime          @default(now())
+  startDate    DateTime
+  endDate      DateTime
+  numNights    Int?
+  numGuests    Int
+  cabinPrice   Int?
+  totalPrice   Int?
+  status       ReservationStatus
+  hasBreakfast Boolean
+  isPaid       Boolean
+  observations String?
+  extrasPrice  Int?
+  cabinId      Int
+  userId       String
+  cabin        Cabins            @relation(fields: [cabinId], references: [id], onDelete: Cascade)
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Settings {
+  id                       Int      @id @default(autoincrement())
+  createdAt                DateTime @default(now())
+  minimumReservationLength Int
+  maxReservationLength     Int
+  maxGuestsPerReservation  Int
+  breakFastPrice           Int
+}
+
+enum UserRole {
+  ADMIN
+  GUEST
+}
+
+enum ReservationStatus {
+  checked_in
+  checked_out
+  unconfirmed
+}

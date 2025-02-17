@@ -1,0 +1,1 @@
+export const STATIC_PAGE_REVALIDATION_TIME = 6 * 60 * 60;
