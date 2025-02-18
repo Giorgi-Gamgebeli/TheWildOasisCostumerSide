@@ -62,7 +62,7 @@ function ReservationEditForm({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
+      className="flex flex-col gap-6 bg-primary-900 px-12 py-8 text-lg"
     >
       <input
         name="reservationId"
@@ -75,7 +75,7 @@ function ReservationEditForm({
         <select
           {...register("numGuests", { valueAsNumber: true })}
           defaultValue={numGuests}
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+          className="w-full rounded-sm bg-primary-200 px-5 py-3 text-primary-800 shadow-sm"
           required
           disabled={isPending}
         >
@@ -98,16 +98,16 @@ function ReservationEditForm({
           disabled={isPending}
           {...register("observations")}
           defaultValue={observations || ""}
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+          className="w-full rounded-sm bg-primary-200 px-5 py-3 text-primary-800 shadow-sm"
         />
-        <span className="mt-4 text-red-600 font-medium block">
+        <span className="mt-4 block font-medium text-red-600">
           {errors["observations"] && (errors["observations"].message as string)}
         </span>
       </div>
 
       <input hidden {...register("id")} />
 
-      <div className="flex justify-end items-center gap-6">
+      <div className="flex items-center justify-end gap-6">
         <SubmitButton pendingLabel="Updating...">
           Updating reservation
         </SubmitButton>

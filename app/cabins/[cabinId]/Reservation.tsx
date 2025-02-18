@@ -24,7 +24,6 @@ async function Reservation({ cabin }: ReservationProps) {
         bookedDates={bookedDates}
         cabin={cabin}
       />
-      <></>
 
       <ReservationForm cabin={cabin} />
     </div>

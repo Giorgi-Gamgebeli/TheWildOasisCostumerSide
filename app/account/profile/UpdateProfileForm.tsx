@@ -56,7 +56,7 @@ function UpdateProfileForm({ countries }: UpdateProfileForm) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
+      className="flex flex-col gap-6 bg-primary-900 px-12 py-8 text-lg"
     >
       <div className="space-y-2">
         <label>Full name</label>
@@ -64,7 +64,7 @@ function UpdateProfileForm({ countries }: UpdateProfileForm) {
           disabled
           defaultValue={name}
           name="fullName"
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
+          className="w-full rounded-sm bg-primary-200 px-5 py-3 text-primary-800 shadow-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         />
       </div>
 
@@ -74,7 +74,7 @@ function UpdateProfileForm({ countries }: UpdateProfileForm) {
           disabled
           name="email"
           defaultValue={email}
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
+          className="w-full rounded-sm bg-primary-200 px-5 py-3 text-primary-800 shadow-sm disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         />
       </div>
 
@@ -82,7 +82,7 @@ function UpdateProfileForm({ countries }: UpdateProfileForm) {
         <div className="flex items-center justify-between">
           <label htmlFor="nationality">Where are you from?</label>
           {countryFlag && (
-            <div className="relative h-5 w-5 ">
+            <div className="relative h-5 w-5">
               <Image
                 fill
                 src={countryFlag}
@@ -105,7 +105,7 @@ function UpdateProfileForm({ countries }: UpdateProfileForm) {
       <div className="space-y-2">
         <label htmlFor="nationalID">National ID number</label>
         <Input
-          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm disabled:cursor-not-allowed  disabled:bg-primary-300"
+          className="w-full rounded-sm bg-primary-200 px-5 py-3 text-primary-800 shadow-sm disabled:cursor-not-allowed disabled:bg-primary-300"
           name="nationalID"
           defaultValue={nationalID}
           register={register}
@@ -114,7 +114,7 @@ function UpdateProfileForm({ countries }: UpdateProfileForm) {
         />
       </div>
 
-      <div className="flex justify-end items-center gap-6">
+      <div className="flex items-center justify-end gap-6">
         <SubmitButton pendingLabel="Updating..." disabled={isPending}>
           Update profile
         </SubmitButton>
