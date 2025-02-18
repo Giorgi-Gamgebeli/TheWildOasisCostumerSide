@@ -11,6 +11,8 @@ type ReservationProps = {
   cabin: z.infer<typeof CabinsSchemaDatabase>;
 };
 
+
+
 async function Reservation({ cabin }: ReservationProps) {
   const [settings, bookedDates] = await Promise.all([
     getSettings(),
