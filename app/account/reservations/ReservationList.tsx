@@ -5,6 +5,7 @@ import { useOptimistic } from "react";
 import { deleteReservation } from "../../_lib/actions";
 import { z } from "zod";
 import { ReservationsSchemaDatabase } from "@/app/_schemas/databaseSchemas";
+import toast from "react-hot-toast";
 
 type ReservationListProps = {
   reservations: {
@@ -29,14 +30,16 @@ function ReservationList({ reservations }: ReservationListProps) {
     reservations,
     (curReservations, reservationId) => {
       return curReservations.filter(
-        (reservation) => reservation.id !== reservationId
+        (reservation) => reservation.id !== reservationId,
       );
-    }
+    },
   );
 
   async function handleDelete(
-    reservationId: z.infer<typeof ReservationsSchemaDatabase.shape.id>
+    reservationId: z.infer<typeof ReservationsSchemaDatabase.shape.id>,
   ) {
+    toast.success("Reservation sucessfully deleted!");
+
     optimisticDelete(reservationId);
     await deleteReservation(reservationId);
   }
