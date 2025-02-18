@@ -41,7 +41,7 @@ function DateSelector({
   const cabinPrice = numNights * (regularPrice - discount);
 
   return (
-    <div className="flex flex-col justify-between border border-primary-800 min-w-[40rem]">
+    <div className="flex min-w-[40rem] flex-col justify-between border border-primary-800">
       <DayPicker
         classNames={{
           root: "bg-transparent text-primary-100 text-[1rem] inline-flex items-center rounded-lg shadow-lg w-full h-full",
@@ -79,7 +79,7 @@ function DateSelector({
           if (isDateBooked(bookedDates, selected?.from, selected?.to)) {
             resetRange();
             toast.error(
-              "Selected range includes booked dates. Try reserving separately"
+              "Selected range includes booked dates. Try reserving separately",
             );
           }
 
@@ -90,14 +90,14 @@ function DateSelector({
           if (rangeLength < minimumReservationLength) {
             resetRange();
             toast.error(
-              `Minimum reservation length is: ${minimumReservationLength} (day)`
+              `Minimum reservation length is: ${minimumReservationLength} (day)`,
             );
           }
         }}
         selected={range}
         numberOfMonths={2}
         startMonth={new Date()}
-        hidden={{ before: new Date() }}
+        hidden={{ before: addDays(new Date(), 1) }}
         endMonth={addMonths(new Date(), maxReservationLength / 30)}
         disabled={(curDate) =>
           isPast(addDays(curDate, 1)) ||
@@ -106,13 +106,13 @@ function DateSelector({
         }
       />
 
-      <div className="flex items-center justify-between px-8 bg-accent-500 text-primary-800 h-[72px]">
+      <div className="flex h-[72px] items-center justify-between bg-accent-500 px-8 text-primary-800">
         <div className="flex items-baseline gap-6">
-          <p className="flex gap-2 items-baseline">
+          <p className="flex items-baseline gap-2">
             {discount > 0 ? (
               <>
                 <span className="text-2xl">${regularPrice - discount}</span>
-                <span className="line-through font-semibold text-primary-700">
+                <span className="font-semibold text-primary-700 line-through">
                   ${regularPrice}
                 </span>
               </>
@@ -136,7 +136,7 @@ function DateSelector({
 
         {range.from || range.to ? (
           <button
-            className="border border-primary-800 py-2 px-4 text-sm font-semibold"
+            className="border border-primary-800 px-4 py-2 text-sm font-semibold"
             onClick={resetRange}
           >
             Clear
